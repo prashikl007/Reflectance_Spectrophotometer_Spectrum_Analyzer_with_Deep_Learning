@@ -1,7 +1,7 @@
 # Spectrum_analyzer
 script to analyze the spectrum of element from camera to corresponing wavelength
 
-Color_pxel_to_wavelength.py ---> script to map colors to respective wavelength and sotr it to excel file ---> pixel_wavelength.xlsx
+Color_pxel_to_wavelength.py ---> script to map colors to respective wavelength and store it to excel file ---> pixel_wavelength.xlsx
 
 pixel_wavelength.xlsx ---> contains first three column as r,g,b values of color, fourth column is wavelength for respective color ---> calculation formula is present in Color_pxel_to_wavelength.py
 
