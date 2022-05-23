@@ -16,4 +16,5 @@ Codes in following script is embedded in GUI script.
 optical_spectrum_dataset.xlsx  -------> wavelengths for different materials like salt(NaCl), chalk(CaCO3), table sugar. This sheet is the dataset for training NN model and can be updated by adding new spectrum wavelengths of new material with "add to dataset" button in GUI so that model can be trained for new materials.
 
 spectrum_2.jpg is a visible spectrum used for manupulation of data.
+
 spectrum_300pixels.jpg   is a visible spectrum used for manupulation of data.
