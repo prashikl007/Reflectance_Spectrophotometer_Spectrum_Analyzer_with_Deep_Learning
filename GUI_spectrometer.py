@@ -8,9 +8,14 @@ import numpy as np
 import openpyxl
 from matplotlib import pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+import keras
 
+#initialization and loading required data
+model_name = "spectrum_model.h5"
+model = keras.models.load_model(model_name)
+predict_pressed = 0
 
-
+#here starts required functions
 def load_xl_data():
    # loading wavelength data from excel sheet
    start = time.time()
@@ -26,7 +31,7 @@ def load_xl_data():
 
    color_pixel = []
    wavelength = []
-   for i in range(row - 1):
+   for i in range(0, 315, 1):
       # print('current i = ', i)
       obj1 = sheet_obj.cell(row=1 + i, column=1)
       r = int(obj1.value)
@@ -104,7 +109,11 @@ def get_non_repeated_wavelength(wavelength, intensity):
 # end of get_non_repeated_wavelength()
 
 intensity = []
-def get_plot_from_wavelength(color_pixel, wavelength, win):
+def get_plot_from_wavelength(color_pixel, wavelength, win, prediction):
+   global predict_pressed
+   if predict_pressed == 1:
+      prediction.config(text =  "__________")
+      
    img_path = 'C:/Users/Public/PYTHON_PROJECTS/spectrometer/Al_foil.jpg'
    #image = cv2.imread(img_path)
    #cv2.imshow("image", image)
@@ -152,9 +161,9 @@ def get_plot_from_wavelength(color_pixel, wavelength, win):
    unique_color = []
    l = len(unique_color_values)
    for i in range(l):
-      if ((unique_color_values[i][0] > 70) or
-              (unique_color_values[i][1] > 70) or
-              (unique_color_values[i][2] > 70)):
+      if ((unique_color_values[i][0] > 20) or
+              (unique_color_values[i][1] > 20) or
+              (unique_color_values[i][2] > 20)):
          if ((unique_color_values[i][0] != unique_color_values[i][1]) and
                  (unique_color_values[i][0] != unique_color_values[i][2])):
             unique_color.append(unique_color_values[i])
@@ -230,10 +239,27 @@ def get_plot_from_wavelength(color_pixel, wavelength, win):
    print("total time elapsed = ", total_stop - total_start)
 # end of function get_plot_from_wavelength()
 
+def predict_material(prediction):
+   materials = ["caco3", "nacl", "table_sugar"]
+   global intensity
+   global model
+   x = np.expand_dims(intensity, axis=0)
+   new_pred = model.predict(x)
+   max_value = max(new_pred[0])
+   for i in range(len(materials)):
+       if new_pred[0][i] == max_value:
+           index = i
+   print("detected material = ", materials[index])
+   prediction.config(text = materials[index])
+   global predict_pressed
+   predict_pressed = 1
+   
+
 
 #start of GUI functions
 def show_frames():
    im = cap.read()[1]
+   im = cv2.rectangle(im, (450, 80), (600, 300), (0, 255, 255), 2)
    Image1= cv2.cvtColor(im,cv2.COLOR_BGR2RGB)
    img = Image.fromarray(Image1)
    imgtk = ImageTk.PhotoImage(image = img)
@@ -297,6 +323,8 @@ win.title('Portable Optical Spectrometer')
 
 color_pixel, wavelength = load_xl_data()
 
+
+
 L2 = Label(win,text = " Camera  ",font=("times new roman",10,"bold"),bg="white",fg="red").grid(row=0, column=0)
 L3 = Label(win,text = " Spectrum Graph ",font=("times new roman",10,"bold"),bg="white",fg="red").grid(row=0, column=1)
 label =Label(win)
@@ -305,11 +333,12 @@ cap = cv2.VideoCapture(1)
 
 show_frames()
 B1 = Button(win,text="Capture",font=("Times new roman",10,"bold"),bg="white",fg="red",command=capture).grid(row=3, column=0, )
-B2 = Button(win,text="Analysis",font=("Times new roman",10,"bold"),bg="white",fg="red",command =lambda: get_plot_from_wavelength(color_pixel, wavelength, win)).grid(row=4, column=0)
-L1 = Label(win,text = "Detected Material is:  ",font=("times new roman",10,"bold"),bg="white",fg="red").grid(row=4, column=1)
-Output = Text(win, height = 3,width = 25,bg = "light cyan").grid(row=4, column=2)
+B2 = Button(win,text="Analysis",font=("Times new roman",10,"bold"),bg="white",fg="red",command =lambda: get_plot_from_wavelength(color_pixel, wavelength, win, prediction)).grid(row=4, column=0)
+prediction = Label(win, text = "__________", height = 3,width = 25,bg = "light cyan")
+prediction.grid(row=4, column=2)
+B3 = Button(win,text="Predict material",font=("Times new roman",10,"bold"),bg="white",fg="red",command= lambda: predict_material(prediction)).grid(row=3, column=1, )
+L1 = Label(win,text = "Detected Material is: ------>  ",font=("times new roman",10,"bold"),bg="white",fg="red").grid(row=4, column=1)
+
 
 win.mainloop()
 cap.release()
-
-
