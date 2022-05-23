@@ -1,5 +1,6 @@
 # Spectrum_analyzer
 script to analyze the visible spectrum of element from camera to corresponding wavelength
+GUI_spectrometer.py   ------>  GUI script with complete functionality.
 
 Color_pxel_to_wavelength.py ---> script to map colors to respective wavelength and store it to excel file ---> pixel_wavelength.xlsx
 
