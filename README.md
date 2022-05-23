@@ -1,4 +1,4 @@
-# Spectrum_analyzer
+# Visible Spectrum Analyzer with Deep Learning
 script to analyze the visible spectrum of element from camera to corresponding wavelengths.
 
 GUI_spectrometer.py   ------>  GUI script with complete functionality. This requires  ----> pixel_wavelength.xlsx, spectrum_model.h5
