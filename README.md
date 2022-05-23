@@ -10,7 +10,7 @@ GUI_spectrometer.py   ------>  GUI script with complete functionality. This requ
     2> spectrum_model.h5 ------> neural network model for prediction.
     
     Press Analyse button to get plot
-    Press store to Dataset button to store detected wavelengths shoen in plot in optical_spectrum_dataset.xlsx
+    Press store to Dataset button to store detected wavelengths shown in plot in optical_spectrum_dataset.xlsx
     Press Predict material for detecting material
 
 
