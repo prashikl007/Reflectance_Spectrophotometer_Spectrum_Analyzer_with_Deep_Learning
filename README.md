@@ -14,7 +14,7 @@ GUI_spectrometer.py   ------>  GUI script with complete functionality. This requ
     Press Predict material for detecting material
 
 
-Codes in following script is embedded in GUI script.
+Codes in following script are embedded in GUI script.
 
     1> Color_pxel_to_wavelength.py ---> script to map colors to respective wavelength and store it to excel file ---> pixel_wavelength.xlsx
     2> detect_wavelength.py  ---> image of spectrum is provided to this script, which generates the respective spectrum wavelength and plots it's amplitude / intensity,  --> this file uses data from pixel_wavelength.xlsx to map wavelengths of spectrum from new material or spectrum image.
