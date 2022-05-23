@@ -1,6 +1,9 @@
 # Visible Spectrum Analyzer with Deep Learning
 script to analyze the visible spectrum of element from camera to corresponding wavelengths.
 
+![This is an image](https://github.com/prashikl007/Visible_Spectrum_Analyzer_with_Deep_Learning/blob/main/al%20foil.jpg)
+
+
 GUI_spectrometer.py   ------>  GUI script with complete functionality. This requires  ----> pixel_wavelength.xlsx, spectrum_model.h5
 
     1> pixel_wavelength.xlsx ---> contains first three column as r,g,b values of color, fourth column is wavelength for respective color ---> for this mapping script is present in Color_pxel_to_wavelength.py
