@@ -1,8 +1,8 @@
 # Visible Spectrum Analyzer with Deep Learning
 script to analyze the visible spectrum of element from camera to corresponding wavelengths.
-
 ![This is an image](https://github.com/prashikl007/Visible_Spectrum_Analyzer_with_Deep_Learning/blob/main/al%20foil.jpg)
 
+Horizontal axis in plot spectrum graph is wavelength in 'nm', vertical axis is count for corresponding color pixels or intensity of the wavelength of that color pixel.
 
 GUI_spectrometer.py   ------>  GUI script with complete functionality. This requires  ----> pixel_wavelength.xlsx, spectrum_model.h5
 
@@ -25,4 +25,3 @@ optical_spectrum_dataset.xlsx  -------> wavelengths for different materials like
 spectrum_2.jpg is a visible spectrum used for manupulation of data.
 
 spectrum_300pixels.jpg   is a visible spectrum used for manupulation of data.
-
