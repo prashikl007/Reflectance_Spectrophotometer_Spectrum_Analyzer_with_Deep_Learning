@@ -18,3 +18,4 @@ optical_spectrum_dataset.xlsx  -------> wavelengths for different materials like
 spectrum_2.jpg is a visible spectrum used for manupulation of data.
 
 spectrum_300pixels.jpg   is a visible spectrum used for manupulation of data.
+
