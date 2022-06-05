@@ -1,4 +1,4 @@
-# Visible Spectrum Analyzer with Deep Learning
+# Relfection Spectrophotometer Spectrum Analyzer with Deep Learning
 script to analyze the visible spectrum of element from camera to corresponding wavelengths.
 ![This is an image](https://github.com/prashikl007/Visible_Spectrum_Analyzer_with_Deep_Learning/blob/main/al%20foil.jpg)
 
@@ -23,3 +23,6 @@ Codes in following script are embedded in GUI script.
 optical_spectrum_dataset.xlsx  -------> wavelengths for different materials like salt(NaCl), chalk(CaCO3), table sugar. This sheet is the dataset for training NN model and can be updated by adding new spectrum wavelengths of new material with "add to dataset" button in GUI so that model can be trained for new materials.
 
 spectrum_300pixels.jpg   is a visible spectrum used for manupulation of data. (300 pixels or row in image = 700nm to 400nm wavelength)
+
+Training and validation curve of the NN model
+![This is an image](https://github.com/prashikl007/Relfection_Spectrophotometer_Spectrum_Analyzer_with_Deep_Learning/blob/main/training_and_validation_curve.jpeg)
